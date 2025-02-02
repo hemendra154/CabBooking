@@ -3,6 +3,7 @@ package com.hs.cabbooking.controller;
 import com.hs.cabbooking.dto.requestDTO.BookingRequestDTO;
 import com.hs.cabbooking.dto.requestDTO.BookingStatusUpdateDTO;
 import com.hs.cabbooking.dto.responseDTO.BookingResponseDTO;
+import com.hs.cabbooking.exception.CabBookingException;
 import com.hs.cabbooking.service.BookingService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,25 +21,25 @@ public class BookingController {
     BookingService bookingService;
 
     @PutMapping
-    public ResponseEntity<BookingResponseDTO> createBooking(@Valid @RequestBody BookingRequestDTO bookingRequestDTO){
+    public ResponseEntity<BookingResponseDTO> createBooking(@Valid @RequestBody BookingRequestDTO bookingRequestDTO) throws CabBookingException{
         BookingResponseDTO bookingResponseDTO = bookingService.createBooking(bookingRequestDTO);
         return new ResponseEntity<>(bookingResponseDTO, HttpStatus.CREATED);
     }
 
     @GetMapping("/{bookingId}")
-    public ResponseEntity<BookingResponseDTO> getBookingById(@PathVariable Integer bookingId){
+    public ResponseEntity<BookingResponseDTO> getBookingById(@PathVariable Integer bookingId) throws CabBookingException{
         BookingResponseDTO bookingResponseDTO = bookingService.getBookingById(bookingId);
         return new ResponseEntity<>(bookingResponseDTO, HttpStatus.FOUND);
     }
 
     @PatchMapping("/{bookingId}/status")
-    public ResponseEntity<BookingResponseDTO> updatingBooking(@PathVariable Integer bookingId, @Valid @RequestBody BookingStatusUpdateDTO bookingRequestDTO){
+    public ResponseEntity<BookingResponseDTO> updatingBooking(@PathVariable Integer bookingId, @Valid @RequestBody BookingStatusUpdateDTO bookingRequestDTO) throws CabBookingException{
         BookingResponseDTO bookingResponseDTO = bookingService.updateBooking(bookingId, bookingRequestDTO);
         return new ResponseEntity<>(bookingResponseDTO, HttpStatus.OK);
     }
 
     @GetMapping("/{customerId}")
-    public ResponseEntity<List<BookingResponseDTO>> getAllBookingByCustomer(@PathVariable Integer customerId){
+    public ResponseEntity<List<BookingResponseDTO>> getAllBookingByCustomer(@PathVariable Integer customerId) throws CabBookingException {
         List<BookingResponseDTO> bookingResponseDTO = bookingService.getAllBookingByCustomer(customerId);
         return new ResponseEntity<>(bookingResponseDTO, HttpStatus.FOUND);
     }

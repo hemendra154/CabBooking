@@ -8,12 +8,15 @@ import com.hs.cabbooking.exception.CabBookingException;
 import com.hs.cabbooking.repository.CabRepository;
 import com.hs.cabbooking.service.CabService;
 import com.hs.cabbooking.utility.enums.CabType;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-
+@Service
+@Transactional
 public class CabServiceImpl implements CabService {
 
     @Autowired

@@ -8,11 +8,13 @@ import com.hs.cabbooking.exception.CabBookingException;
 import com.hs.cabbooking.repository.UserRepository;
 import com.hs.cabbooking.service.UserService;
 import com.hs.cabbooking.utility.enums.Role;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired

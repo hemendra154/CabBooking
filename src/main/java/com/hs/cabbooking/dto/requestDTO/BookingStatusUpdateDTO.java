@@ -8,6 +8,6 @@ import lombok.Data;
 public class BookingStatusUpdateDTO {
 
     @NotNull(message = "Status is required")
-    @Pattern(regexp = "PENDING|CONFIRMED|COMPLETED|CANCELLED", message = "Invalid Booking Status")
+    @Pattern(regexp = "^(PENDING|CONFIRMED|COMPLETED|CANCELLED)$", message = "Invalid Booking Status")
     private String status;
 }

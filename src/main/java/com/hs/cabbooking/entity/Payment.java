@@ -20,10 +20,6 @@ public class Payment {
     @JoinColumn(name = "booking_id", referencedColumnName = "bookingId", nullable = false)
     private Booking booking;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "userId", nullable = false)
-    private User customer;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private PaymentMode paymentMethod;

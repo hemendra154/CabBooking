@@ -44,11 +44,15 @@ create table bookings(
 
 create table payments(
     payment_id int primary key auto_increment,
-    booking_id int,
-    payment_method enum('CASH', 'CARD', 'ONLINE') not null,
+    booking_id int not null,
+    customer_id int not null,
+    payment_method enum('CASH', 'CARD', 'UPI') not null,
+    payment_status enum('PENDING', 'COMPLETED', 'FAILED') DEFAULT 'PENDING',
     amount decimal(10,2) not null,
+    transaction_id varchar(20) unique,
     payment_time timestamp default current_timestamp,
-    foreign key (booking_id) references bookings(booking_id)
+    foreign key (booking_id) references bookings(booking_id),
+    foreign key (customer_id) references users(user_id)
 );
 
 create table ride_locations(

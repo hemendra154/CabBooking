@@ -18,10 +18,10 @@ public class RideLocation {
     @JoinColumn(name = "booking_id", referencedColumnName = "bookingId", nullable = false)
     private Booking booking;
 
-    @Column(nullable = false, precision = 9, scale = 6)
+    @Column(nullable = false, precision = 9)
     private Double latitude;
 
-    @Column(nullable = false, precision = 9, scale = 6)
+    @Column(nullable = false, precision = 9)
     private Double longitude;
 
     @Column(nullable = false, updatable = false)

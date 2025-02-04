@@ -29,7 +29,7 @@ public class Booking {
 	@Column(nullable = false)
 	private String dropoffLocation;
 
-	@Column(nullable = false, precision = 10, scale = 2)
+	@Column(nullable = false, precision = 10)
 	private Double fare;
 
 	@Enumerated(EnumType.STRING)

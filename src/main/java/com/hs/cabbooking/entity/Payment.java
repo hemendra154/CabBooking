@@ -24,7 +24,7 @@ public class Payment {
     @Column(nullable = false)
     private PaymentMode paymentMethod;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column(nullable = false, precision = 10)
     private Double amount;
 
     @Enumerated(EnumType.STRING)

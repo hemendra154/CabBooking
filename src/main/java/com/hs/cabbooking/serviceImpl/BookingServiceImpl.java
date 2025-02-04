@@ -37,7 +37,7 @@ public class BookingServiceImpl implements BookingService {
         User customer = userRepository.findById(bookingRequestDTO.getCustomerId())
                 .orElseThrow(() -> new CabBookingException("Customer Not Found"));
 
-        Cab cab = cabRepository.findCabById(bookingRequestDTO.getCabId())
+        Cab cab = cabRepository.findCabByCabId(bookingRequestDTO.getCabId())
                 .orElseThrow(() -> new CabBookingException("Cab Not Found"));
 
         if(!cab.getIsAvailable()){

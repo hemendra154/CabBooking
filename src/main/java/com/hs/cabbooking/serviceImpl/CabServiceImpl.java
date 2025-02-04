@@ -39,12 +39,10 @@ public class CabServiceImpl implements CabService {
     }
 
     public CabResponseDTO getCabByID(Integer cabId) throws CabBookingException {
-        Optional<Cab> cabOptional = cabRepository.findCabById(cabId);
-        if(cabOptional.isPresent()){
-            return objectMapper(cabOptional.get());
-        }else{
-            throw new CabBookingException("Cab Not Found");
-        }
+        Cab cabOptional = cabRepository.findCabByCabId(cabId)
+                .orElseThrow(() -> new CabBookingException("Cab Not Found"));
+
+        return objectMapper(cabOptional);
     }
 
     public List<CabResponseDTO> getAllCabs() throws CabBookingException {
@@ -55,7 +53,7 @@ public class CabServiceImpl implements CabService {
     }
 
     public boolean setCabAvailability(Integer cabId, boolean availability) throws CabBookingException {
-        Optional<Cab> cabOptional = cabRepository.findCabById(cabId);
+        Optional<Cab> cabOptional = cabRepository.findCabByCabId(cabId);
         if(cabOptional.isPresent()){
             Cab cab =  cabOptional.get();
             cab.setIsAvailable(availability);

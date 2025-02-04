@@ -20,8 +20,8 @@
 	<description>CabBooking is an application used by travel agency to manage the process of cab booking</description>
 
 	<properties>
-		<java.version>21</java.version>
-		<log4j2.version>2.19.0</log4j2.version>
+		<java.version>17</java.version>
+		<log4j2.version>2.17.1</log4j2.version>
 	</properties>
 
 	<dependencies>

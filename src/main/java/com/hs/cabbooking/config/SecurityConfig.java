@@ -22,10 +22,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable) // Disable CSRF for testing (enable in production)
-                .authorizeHttpRequests(auth -> auth
+                /*.authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/**").permitAll() // Allow public access to Cab API
                         .anyRequest().authenticated() // Secure other endpoints
-                )
+                )*/
                 .formLogin(AbstractHttpConfigurer::disable) // Disable default login form
                 .httpBasic(AbstractHttpConfigurer::disable); // Disable basic authentication
 
